@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information Form</title>
+  <style>
+    body {
+      background-color: #f0f0f0; /* Set background color */
+    }
+    .form-container {
+      width: 50%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"], input[type="email"], select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    input[type="submit"], input[type="reset"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      float: left;
+    }
+    input[type="submit"]:hover{
+      background-color: #45a049;
+    }
+
+    input[type="reset"]:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+    }
+    .focused {
+      border: 1px solid blue !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Student Information Form</h2>
+    <form id="studentForm" onsubmit="return validateForm()">
+      <label for="studentName">Student Name:</label>
+      <input type="text" id="studentName" name="studentName" required maxlength="20" pattern="[A-Za-z]+"required onchange="this.classList.remove('error')">
+
+      <label for="birthDate">Birth Date:</label>
+      <input type="date" id="birthDate" name="birthDate" required onchange="this.classList.remove('error')"><br>
+
+      <br>
+
+      <label class="gender">Gender:</label>
+      <input type="radio" id="male" name="gender" value="male" required>
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female" required>
+      <label for="female">Female</label><br>
+
+      <br>
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required maxlength="250" onchange="this.classList.remove('error')">
+
+      <label for="city">City:</label><br>
+      <input type="text" id="city" name="city" required maxlength="50"><br>
+      
+      <label for="state">State:</label><br>
+      <input type="text" id="state" name="state" required maxlength="50"><br>
+      
+      <label for="postalCode">Postal Code:</label><br>
+      <input type="text" id="postalCode" name="postalCode" required pattern="[0-9]{5}"><br>
+      
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required maxlength="250"placeholder="@gmail.com"><br>
+      
+      <label for="mobileNumber">Mobile Number:</label>
+      <input type="tel" id="mobileNumber" name="mobileNumber" required pattern="[0-9]{11}" placeholder="+92"><br>
+      
+      <br>
+
+      <label for="telephone Number">Telephone Number:</label>
+      <input type="tel" id="telephone Number" name="telephone Number" pattern="[0-9]{12}"placeholder="+42"><br>
+      
+      <br>
+
+      <label for="workNumber">Work Number:</label>
+      <input type="tel" id="workNumber" name="workNumber" pattern="[0-9]{12}"><br>
+
+      <br>
+      <label for="company">Company:</label>
+      <input type="text" id="company" name="company" required maxlength="150"><br>
+      
+      <label for="courses">Courses:</label><br>
+      <select id="courses" name="courses" required>
+        <option value="">Select Course</option>
+        <option value="BS IT">BS IT</option>
+        <option value="BSCS">BSCS</option>
+        <option value="BS DFCS">BS DFCS</option>
+        <option value=" BS ENGLISH">BS ENGLISH 2</option>
+        <option value="BS MATHS"> BS MATHS</option>
+        <option value="BS PHYCOLOGY">BS PHYCOLOGY</option>
+        <option value="BS URDU">BS URDU</option>
+        <option value="BS IR">BS IR</option>
+        <option value="BS ARTS">BS ARTS</option>
+        <option value="BS BIOLOGY">BS BIOLOGY</option>
+        <!-- Add more course options here -->
+      </select><br>
+      
+      <label for="additionalComments">Additional Comments:</label><br>
+      <input type="text" id="additionalComments" name="additionalComments" required maxlength="500"><br>
+    
+      <!-- Add other form fields as per the provided validation rules -->
+
+      <input type="submit" value="Submit"> 
+      
+      <input type="reset" value="Clear">
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var form = document.getElementById("studentForm");
+      var inputs = form.querySelectorAll("input, select");
+
+      for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+
+        if (input.checkValidity() == false) {
+          input.classList.add("error");
+          alert("Validation error: Please fill out all required fields correctly.");
+          return false;
+        }
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
